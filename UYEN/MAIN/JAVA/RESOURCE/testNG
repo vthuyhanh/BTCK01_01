@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="OLMS Tests">
+    <test name="Login Tests">
+        <classes>
+            <class name="com.codedao.olms.test.LoginTest" />
+        </classes>
+    </test>
+    <test name="Dashboard Tests">
+        <classes>
+            <class name="com.codedao.olms.test.DashboardTest" />
+        </classes>
+    </test>
+    <test name="Add New Employee Tests">
+        <classes>
+            <class name="com.codedao.olms.test.AddNewEmployeeTest" />
+        </classes>
+    </test>
+    <test name="Employee Management Tests">
+        <classes>
+            <class name="com.codedao.olms.test.EmployeeManagementTest" />
+        </classes>
+    </test>
+</suite>
