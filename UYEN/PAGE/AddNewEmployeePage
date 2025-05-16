@@ -1,1 +1,96 @@
-,,,
+package pages;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+
+public class AddNewEmployeePage {
+    private WebDriver driver;
+private static final Logger logger = LogManager.getLogger(AddNewEmployeePage.class);
+
+// Locators cho các elements trên trang Thêm mới nhân viên
+private By firstNameInput = By.id("firstName"); // Ví dụ: Input Tên
+private By lastNameInput = By.id("lastName"); // Ví dụ: Input Họ
+private By emailInput = By.id("email"); // Ví dụ: Input Email
+private By saveButton = By.xpath("//button[contains(text(), 'Lưu')]"); // Ví dụ: Button Lưu
+private By cancelButton = By.xpath("//button[contains(text(), 'Hủy')]"); // Ví dụ: Button Hủy
+private By successMessage = By.xpath("//div[@class='alert alert-success']"); // Ví dụ: Thông báo thành công
+
+public AddNewEmployeePage(WebDriver driver) {
+    this.driver = driver;
+    logger.info("Khởi tạo trang AddNewEmployeePage.");
+}
+
+public void enterFirstName(String firstName) {
+    try {
+        WebElement firstNameElement = driver.findElement(firstNameInput);
+        firstNameElement.sendKeys(firstName);
+        logger.info("Nhập tên: " + firstName);
+    } catch (org.openqa.selenium.NoSuchElementException e) {
+        logger.error("Không tìm thấy input Tên.");
+    }
+}
+
+public void enterLastName(String lastName) {
+    try {
+        WebElement lastNameElement = driver.findElement(lastNameInput);
+        lastNameElement.sendKeys(lastName);
+        logger.info("Nhập họ: " + lastName);
+    } catch (org.openqa.selenium.NoSuchElementException e) {
+        logger.error("Không tìm thấy input Họ.");
+    }
+}
+
+public void enterEmail(String email) {
+    try {
+        WebElement emailElement = driver.findElement(emailInput);
+        emailElement.sendKeys(email);
+        logger.info("Nhập email: " + email);
+    } catch (org.openqa.selenium.NoSuchElementException e) {
+        logger.error("Không tìm thấy input Email.");
+    }
+}
+
+public void clickSaveButton() {
+    try {
+        WebElement saveBtn = driver.findElement(saveButton);
+        saveBtn.click();
+        logger.info("Click nút Lưu.");
+    } catch (org.openqa.selenium.NoSuchElementException e) {
+        logger.error("Không tìm thấy nút Lưu.");
+    }
+}
+
+public void clickCancelButton() {
+    try {
+        WebElement cancelBtn = driver.findElement(cancelButton);
+        cancelBtn.click();
+        logger.info("Click nút Hủy.");
+    } catch (org.openqa.selenium.NoSuchElementException e) {
+        logger.error("Không tìm thấy nút Hủy.");
+    }
+}
+
+public boolean isSuccessMessageDisplayed() {
+    try {
+        WebElement successMsgElement = driver.findElement(successMessage);
+        boolean isDisplayed = successMsgElement.isDisplayed();
+        logger.info("Kiểm tra hiển thị thông báo thành công: " + isDisplayed);
+        return isDisplayed;
+    } catch (org.openqa.selenium.NoSuchElementException e) {
+        logger.warn("Không tìm thấy thông báo thành công.");
+        return false;
+    }
+}
+
+public void addNewEmployee(String firstName, String lastName, String email) {
+    enterFirstName(firstName);
+    enterLastName(lastName);
+    enterEmail(email);
+    clickSaveButton();
+}
+}
+
