@@ -1,0 +1,45 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="OLMS Tests">
+    <test name="Login Tests">
+        <classes>
+            <class name="com.codedao.olms.test.LoginTest" />
+        </classes>
+    </test>
+    <test name="Dashboard Tests">
+        <classes>
+            <class name="com.codedao.olms.test.DashboardTest" />
+        </classes>
+    </test>
+    <test name="Add New Employee Tests">
+        <classes>
+            <class name="com.codedao.olms.test.AddNewEmployeeTest" />
+        </classes>
+    </test>
+    <test name="Employee Management Tests">
+        <classes>
+            <class name="com.codedao.olms.test.EmployeeManagementTest" />
+        </classes>
+    </test>
+</suite>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="FileAppender" fileName="logs/test.log" immediateFlush="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="FileAppender"/>
+        </Root>
+        <logger name="com.codedao.olms" level="info" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="FileAppender"/>
+        </logger>
+    </Loggers>
+</Configuration>
