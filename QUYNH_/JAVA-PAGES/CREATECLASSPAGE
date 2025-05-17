@@ -1,1 +1,43 @@
+package com.automation.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class CreateClassPage {
+    private WebDriver driver;
+
+    // Constructor
+    public CreateClassPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Locators
+    private By classNameField = By.id("className");
+    private By classCodeField = By.id("classCode");
+    private By startDateField = By.id("startDate");
+    private By endDateField = By.id("endDate");
+    private By createButton = By.id("createBtn");
+
+    // Methods
+    public void enterClassName(String name) {
+        driver.findElement(classNameField).sendKeys(name);
+    }
+
+    public void enterClassCode(String code) {
+        driver.findElement(classCodeField).sendKeys(code);
+    }
+
+    public void enterStartDate(String startDate) {
+        driver.findElement(startDateField).sendKeys(startDate);
+    }
+
+    public void enterEndDate(String endDate) {
+        driver.findElement(endDateField).sendKeys(endDate);
+    }
+
+    public void clickCreateButton() {
+        driver.findElement(createButton).click();
+    }
+}
+ww88.selenium.by
 
