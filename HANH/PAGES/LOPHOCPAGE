@@ -1,4 +1,4 @@
-package pages;
+package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +23,7 @@ public class LophocPage extends BasePage {
     public void openLopHocPage()
     {
         hover(menuDaoTao);
-       drive.findElement(submenuLopHoc).click();
+        drive.findElement(submenuLopHoc).click();
     }
 
     public void themLopHoc(String tenLop, String moTa) {
