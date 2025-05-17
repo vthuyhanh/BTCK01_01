@@ -1,9 +1,10 @@
-package utils;
+package Utils;
+
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Driverfactory {
+public class DriverFactory {
 
     private static WebDriver driver;
 
