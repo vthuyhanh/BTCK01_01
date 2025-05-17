@@ -1,4 +1,4 @@
-package tests;
+package Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -7,12 +7,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import pages.LophocPage;
+import Pages.LoginPage;
+import Pages.LophocPage;
 
 import java.time.Duration;
 
-public class LopHocTest {
+public class LophocTest {
 
     private WebDriver driver;
     private LophocPage lopHocPage;
