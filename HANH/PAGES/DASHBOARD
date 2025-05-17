@@ -1,46 +1,39 @@
-package pages;
+package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Dashboard extends BasePage {
+import java.util.Objects;
 
-    private final By userProfileIcon = By.cssSelector(".user-avatar"); // hoặc ID thực tế
-    private System Sytem;
+public class DashboardPage extends BasePage {
 
-    public Dashboard(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-    }
-    private By title = By.xpath("(//h2)[1]");;
-    private By MenuTrangchu = By.xpath("(//span) [4]");;
-    private String url= "/dashboard";
 
-    public boolean verifyUrl()
-    {
-        Sytem.out.println(driver.getCurrentUrl());
-        Sytem.out.println(url);
-        return driver.getCurrentUrl().contains(url);
+    private final By title = By.xpath("(//h2)[1]");
+    private final By menuTrangChu = By.xpath("(//span)[4]");
+    private final String url = "/dashboard";
 
+    public DashboardPage(WebDriver driver) {
+        super(driver); // driver đã được truyền vào và gán từ BasePage
     }
 
+    // Kiểm tra URL hiện tại có chứa "/dashboard" không
+    public boolean verifyUrl() {
+        System.out.println(driver.getCurrentUrl());
+        System.out.println(url);
+        return Objects.requireNonNull(driver.getCurrentUrl()).contains(url);
+    }
+
+    // Kiểm tra xem người dùng đã đăng nhập chưa (qua icon avatar)
     public boolean isUserLoggedIn() {
-        return isVisible(userProfileIcon);  // biểu tượng avatar, tên người dùng, hoặc tiêu đề dashboard
+        return isVisible(menuTrangChu);
     }
 
+    // Getter và Setter nếu cần
     public By getTitle() {
         return title;
     }
 
-    public void setTitle(By title) {
-        this.title = title;
-    }
-
-    public By getMenuTrangchu() {
-        return MenuTrangchu;
-    }
-
-    public void setMenuTrangchu(By menuTrangchu) {
-        MenuTrangchu = menuTrangchu;
-    }
 }
+
+
+
