@@ -1,6 +1,5 @@
 package com.automation.base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -11,7 +10,10 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        WebDriverManager.chromedriver().setup();
+        // đường dẫn tới chromedriver.exe bạn vừa giải nén
+        System.setProperty("webdriver.chrome.driver",
+                "C:\\Users\\ADMIND\\chromedriver.exe");
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
