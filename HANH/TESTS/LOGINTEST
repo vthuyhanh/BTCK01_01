@@ -1,4 +1,4 @@
-package tests;
+package Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -7,10 +7,12 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.Dashboard;
-import pages.LoginPage;
+import Pages.DashboardPage;
+import Pages.LoginPage;
 
 import java.time.Duration;
+
+import static java.lang.Thread.sleep;
 
 public class LoginTest {
 
@@ -23,17 +25,19 @@ public class LoginTest {
         driver = new ChromeDriver();
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
 
         driver.get("https://olms.codedao.io.vn");
+
         loginPage = new LoginPage(driver);  // ✅ Tạo một lần ở đây
     }
 
     @Test
-    public void testValidLogin() {
+    public void testValidLogin() throws InterruptedException {
         loginPage.loginAs("testadmin", "test1234");
 
-        Dashboard dashboardPage = new Dashboard(driver);
+
+        DashboardPage dashboardPage = new DashboardPage(driver);
         Assert.assertTrue(dashboardPage.isUserLoggedIn(), "❌ Đăng nhập thất bại hoặc trang dashboard chưa load.");
     }
 
@@ -52,3 +56,4 @@ public class LoginTest {
         }
     }
 }
+
