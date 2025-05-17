@@ -1,1 +1,25 @@
+package com.automation.tests;
 
+import com.automation.base.BaseTest;
+import com.automation.pages.CreateClassPage;
+import com.automation.pages.LoginPage;
+import org.testng.annotations.Test;
+
+public class CreateClassTest extends BaseTest {
+
+    @Test
+    public void testCreateClass() {
+        driver.get("https://olms.codeda.io.vn/Login");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("admin", "admin123");
+
+        CreateClassPage classPage = new CreateClassPage(driver);
+        classPage.enterClassName("Lớp học mới");
+        classPage.enterClassCode("12");
+        classPage.enterStartDate("2025-05-09");
+        classPage.enterEndDate("2025-06-30");
+        classPage.clickCreateButton();
+
+        System.out.println("Class created successfully!");
+    }
+}
